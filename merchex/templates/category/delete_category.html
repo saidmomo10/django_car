@@ -1,0 +1,12 @@
+{% extends 'main.html'%}
+
+{% block content %}
+
+<p>Voulez-vous supprimer cette catégorie ?</p>
+<form action="{% url 'delete_category' item.id %}" method="POST">
+    {% csrf_token %}
+    <a class="btn btn-warning" href="{% url 'category_list' %}">Non</a>
+    <input class="btn btn-danger" type="submit" name="Confirmer">
+</form>
+
+{% endblock %}

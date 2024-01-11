@@ -1,0 +1,42 @@
+    {% extends 'main.html'%}
+
+    {% block content %}
+
+    <div class="col-md-5">
+        <h5>Clients:</h5>
+        <hr>
+        <div class="card card-body">
+            <div class="row">
+                <a class="btn btn-primary  btn-sm btn-block" href="{% url 'category_list' %}">Catégories</a><br>
+                <a class="btn btn-secondary  btn-sm btn-block" href="{% url 'add_car' %}">Ajouter une voiture</a>
+            </div>
+            <table class="table table-sm">
+                <tr>
+                    <th>ID</th>
+                    <th>Image</th>
+                    <th>Nom de la voiture</th>
+                    <th>Prix</th>
+                    <th>Catégorie</th>
+                    <th>Mise à jour</th>
+                    <th>Suppression</th>
+                </tr>
+                {% for car in cars %}
+                <tr>
+                    <th><a href="">{{ car.id }}</a></th>
+                    <th>
+                        {% if car.picture %}
+                            <img src="{{ car.picture.url }}" alt="{{ car.name }} Image">
+                        {% endif %}
+                    </th>
+                    <th>{{ car.name }}</th>
+                    <th>{{ car.price }}</th>
+                    <th><a class="btn btn-sm btn-info" href="{% url 'car_detail' car.id %}">Détails</a></th>
+                    <th><a class="btn btn-sm btn-success" href="{% url 'update_car' car.id %}">Modifier</a></th>
+                    <th><a class="btn btn-sm btn-danger" href="{% url 'delete_car' car.id %}">Supprimer</a></th>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+
+    {% endblock %}
