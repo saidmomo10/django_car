@@ -1,0 +1,12 @@
+{% extends 'main.html'%}
+
+{% block content %}
+
+<p>Voulez-vous supprimer ce client ?</p>
+<form action="{% url 'delete_rental' item.id %}" method="POST">
+    {% csrf_token %}
+    <a class="btn btn-warning" href="{% url 'home' %}">Non</a>
+    <input class="btn btn-danger" type="submit" name="Confirmer">
+</form>
+
+{% endblock %}

@@ -2,11 +2,13 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from customers.models import Customer
 from .forms import CustomerForm
+from rentals.models import Rental
 
 # Create your views here.
 def home(request):
+    rentals = Rental.objects.all()
     customers = Customer.objects.all()
-    context = {'customers': customers}
+    context = {'customers': customers, 'rentals': rentals}
     return render(request, 'customer/home.html', context)
 
 def show(request, pk):

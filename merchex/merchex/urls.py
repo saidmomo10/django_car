@@ -23,6 +23,8 @@ urlpatterns = [
     path('', include('customers.urls')),
     path('cars', include('cars.urls')),
     path('categories', include('categories.urls')),
+    path('rentals', include('rentals.urls')),
+
 
     # path('', include('customers.urls')),
 ]
